@@ -15,6 +15,8 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
+Route::resource('guest', 'WebsiteController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

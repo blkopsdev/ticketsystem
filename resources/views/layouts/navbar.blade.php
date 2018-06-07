@@ -19,7 +19,7 @@
                 @guest
                     <li><a href="{{ route('login') }}"><i class="fa fa-lock"></i>{{ __('Login') }}</a></li>
                     <li><a href="{{ route('password.request') }}"><i class="fa fa-unlock-alt"></i>{{ __('Forgot Your Password?') }}</a></li>
-                    
+                    <li><a href="{{ route('guest.index') }}"><i class="fa fa-plus"></i> {{ trans('translate.guest_ticket') }}</a></li>
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
