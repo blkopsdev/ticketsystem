@@ -22,7 +22,7 @@ class WebsiteController extends Controller
             'types'       => TicketType::all(),
         );
 
-        return view('website.tickets.index', compact('data'));
+        return view('guest.indexticket');
     }
 
     /**
