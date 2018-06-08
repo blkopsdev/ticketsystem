@@ -11,6 +11,8 @@ class Department extends Model
      *
      * @var array
      */
+    public $timestamps = true;
+    
     protected $fillable = [
         'name'
     ]; 

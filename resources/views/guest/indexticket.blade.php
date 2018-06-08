@@ -7,7 +7,7 @@
         <h3>{{ trans('translate.guest_ticket') }}</h3>
 
         <div class="row">
-            <form action="{{ route('guest.create') }}" class="validateJSForm top20">
+            <form action="{{ route('guest.store') }}" class="validateJSForm top20">
                 @csrf
                 <div class="form-group col-md-6">
                     <label for="name">{{ trans('translate.name') }}</label>
@@ -44,16 +44,14 @@
                         </span>
                     @endif
                 </div>
-
-                <!-- <div class="form-group col-md-2">
+                
+                <div class="form-group col-md-2">
                     <label for="department_id">{{ trans('translate.department') }}</label>
                     <select name="department_id" class="form-control required">
                         <option value="" selected>{{ trans('translate.choose') }}</option>
-
-                        @foreach ($departments as $d)
-                            <option value="{{ $d->id }}">{{ trans('translate.' . Language::translateSlug($d->name, '_')) }}</option>
+                        @foreach($data->departments as $d)
+                            <option value="{{ $d->id }}">{{ $d->name }}</option>
                         @endforeach
-
                     </select>
 
                     @if ($errors->has('department_id'))
@@ -67,11 +65,9 @@
                     <label for="type_id">{{ trans('translate.ticket_type') }}</label>
                     <select name="type_id" class="form-control required">
                         <option value="" selected>{{ trans('translate.choose') }}</option>
-
-                        @foreach ($types as $t)
-                            <option value="{{ $t->id }}">{{ trans('translate.' . Language::translateSlug($t->name, '_')) }}</option>
+                        @foreach($data->types as $t)
+                            <option value="{{ $t->id }}">{{ $t->name }}</option>
                         @endforeach
-
                     </select>
 
                     @if ($errors->has('type_id'))
@@ -85,11 +81,9 @@
                     <label for="priority_id">{{ trans('translate.priority') }}</label>
                     <select name="priority_id" class="form-control required">
                         <option value="" selected>{{ trans('translate.choose') }}</option>
-
-                        @foreach ($priorities as $p)
-                            <option value="{{ $p->id }}">{{ trans('translate.' . Language::translateSlug($p->name, '_')) }}</option>
+                        @foreach($data->priorities as $p)
+                            <option value="{{ $p->id }}">{{ $p->name }}</option>
                         @endforeach
-
                     </select>
 
                     @if ($errors->has('priority_id'))
@@ -97,7 +91,7 @@
                             <strong>{{ $errors->first('priority_id') }}</strong>
                         </span>
                     @endif
-                </div> -->
+                </div>
 
                 <div class="form-group col-md-12">
                     <label for="content"> {{ trans('translate.message') }} </label>

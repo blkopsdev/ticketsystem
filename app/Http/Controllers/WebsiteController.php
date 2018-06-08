@@ -21,8 +21,8 @@ class WebsiteController extends Controller
             'priorities'  => TicketPriority::all(),
             'types'       => TicketType::all(),
         );
-
-        return view('guest.indexticket');
+        $data = json_decode(json_encode($data));
+        return view('guest.indexticket', compact('data'));
     }
 
     /**
