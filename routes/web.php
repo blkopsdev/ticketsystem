@@ -12,5 +12,11 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
+
+Route::resource('guest', 'WebsiteController');
+
+Auth::routes();
+
+Route::get('/dashboard', 'DashboardController@index')->name('home');
