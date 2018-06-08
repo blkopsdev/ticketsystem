@@ -16,6 +16,16 @@ class WebsiteController extends Controller
      */
     public function index()
     {
+        
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
         $data = array(
             'departments' => Department::all(),
             'priorities'  => TicketPriority::all(),
@@ -26,16 +36,6 @@ class WebsiteController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -43,7 +43,19 @@ class WebsiteController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $ticket = new Ticket();
+        $data = $this->validate($request, [
+            'name'			=> 'required',
+			'email'			=> 'required|email|unique:users',		
+			'title'     	=> 'required',
+			'department_id'	=> 'required',
+			'type_id'		=> 'required',
+			'priority_id'	=> 'required',
+			'content'		=> 'required'
+        ]);
+       
+        $ticket->saveTicket($data);
+        return redirect('/home')->with('success', 'New ticket has been created! Wait sometime to get resolved');
     }
 
     /**
